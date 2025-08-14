@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3AIM">
+    <Package name="Main">
+        <Key ID="STR_A3AIM_Main_Author">
+            <English>gor3Splatter</English>
+            <German>gor3Splatter</German>
+        </Key>
+        <Key ID="STR_A3AIM_Main_Component">
+            <English>A3AIM - Main Component</English>
+            <German>A3AIM - Hauptkomponente</German>
+        </Key>
+        <Key ID="STR_A3AIM_Main_SettingsTitle">
+            <English>Intercept Munitions</English>
+            <German>Intercept Munitions</German>
+        </Key>
+        <Key ID="STR_A3AIM_Main_Title">
+            <English>Intercept Munitions</English>
+            <German>Intercept Munitions</German>
+        </Key>
+        <Key ID="STR_A3AIM_Main_URL">
+            <English>https://gitlab.perfect-co.de/arma3/a3aim-intercept-munitions</English>
+            <German>https://gitlab.perfect-co.de/arma3/a3aim-intercept-munitions</German>
+        </Key>
+    </Package>
+</Project>
