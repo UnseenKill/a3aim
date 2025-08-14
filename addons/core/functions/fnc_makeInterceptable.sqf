@@ -57,6 +57,10 @@ _interceptable deleteVehicleCrew gunner _interceptable;
 
 [QGVAR(interceptVehicleCreated), [_interceptable, _projectile]] call CBA_fnc_serverEvent;
 
+#ifndef __A3AIM_PRODUCTION__
+allCurators apply { _x addCuratorEditableObjects[[_interceptable], true] };
+#endif
+
 [{
     params[["_args",[],[[]]], ["_handlerID",0,[0]]];
     _args params[["_interceptable", objNull, [objNull]], ["_projectile", objNull, [objNull]]];
