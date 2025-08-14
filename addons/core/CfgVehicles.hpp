@@ -22,7 +22,8 @@ class CfgVehicles {
 
     class GVAR(Projectile_Large) : GVAR(Projectile_Base) {
         displayName = CSTRING(Projectile_Large);
-        armor = 15;
+        irTarget = 1;
+        irTargetSize = 2;
     };
 
     class GVAR(Projectile_Large_B) : GVAR(Projectile_Large) {
@@ -70,5 +71,4 @@ class CfgVehicles {
         scope = 1;
         side = 0;
     };
-
 };

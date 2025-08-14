@@ -33,6 +33,57 @@ if !assert(params[
 
 if !assert(!isNull _projectile) exitWith {};
 
+private _suffix = GVAR(sideSuffixes) get _side;
 
+if !assert(!isNil "_suffix") exitWith {};
+
+private _vehicleClass = format["%1_%2", getText(configFile >> "CfgAmmo" >> _ammo >> QGVAR(vehicleClass)), _suffix];
+
+if !assert(isClass(configFile >> "CfgVehicles" >> _vehicleClass)) exitWith {};
+
+TRACE_2(QFUNC(makeInterceptable),_ammo,_vehicleClass);
+
+private _interceptable = _vehicleClass createVehicle(_projectile modelToWorld[0,-5,0]);
+
+if !assert(!isNull _interceptable) exitWith { ERROR_1("Failed to create vehicle %1",_vehicleClass) };
+
+_interceptable setMass 0;
+_interceptable setObjectTexture[0, ""]; // remove texture
+_interceptable setVelocity velocity _projectile;
+createVehicleCrew _interceptable;
+driver _interceptable disableAI "ALL";
+_interceptable deleteVehicleCrew gunner _interceptable;
+(group driver _interceptable) setVariable["ace_map_hideBlueForceMarker", true];
+
+[QGVAR(interceptVehicleCreated), [_interceptable, _projectile]] call CBA_fnc_serverEvent;
+
+[{
+    params[["_args",[],[[]]], ["_handlerID",0,[0]]];
+    _args params[["_interceptable", objNull, [objNull]], ["_projectile", objNull, [objNull]]];
+
+    private _canIntercept = (((getPosATL _projectile) select 2) >= GVAR(minInterceptHeight));
+
+    if (!alive _projectile || { !alive _interceptable && _canIntercept }) exitWith {
+        [QGVAR(interceptDone), [_interceptable, alive _projectile]] call CBA_fnc_serverEvent;
+
+        deleteVehicle _interceptable;
+        if (alive _projectile) then {
+            deleteVehicle _projectile;
+        };
+
+        [_handlerID] call CBA_fnc_removePerFrameHandler;
+    };
+
+    // Interceptable is below minimal horizon, still flying but descending
+    if (!_canIntercept && { alive _interceptable && { ((velocity _projectile) select 2) < 0 } }) exitWith {
+        [QGVAR(interceptDone), [_interceptable, false]] call CBA_fnc_serverEvent;
+
+        deleteVehicle _interceptable;
+        [_handlerID] call CBA_fnc_removePerFrameHandler;
+    };
+    
+    _interceptable setPos (_projectile modelToWorld[1,-5,1]);
+    _interceptable setVelocity velocity _projectile;
+}, 0, [_interceptable, _projectile]] call CBA_fnc_addPerFrameHandler;
 
 nil;
