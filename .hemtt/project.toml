@@ -1,0 +1,24 @@
+name = "Intercept Munitions"
+author = "gor3Splatter"
+prefix = "a3aim"
+mainprefix = "z"
+
+[files]
+include = [
+    "a3aim.paa",
+    "LICENSE",
+    "README.md",
+    "mod.cpp"
+]
+
+[hemtt.launch.default]
+dlc = ["Reaction Forces"]
+workshop = [
+    "450814997", # CBA_A3
+    "463939057", # ACE3
+    "1779063631", # ZEN
+]
+
+[hemtt.launch.malden]
+extends = "default"
+mission = "a3aim.Malden"

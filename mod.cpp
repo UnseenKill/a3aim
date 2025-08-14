@@ -1,0 +1,14 @@
+name = "Intercept Munitions";
+picture = "a3aim.paa";
+actionName = "Website";
+action = "https://gitlab.perfect-co.de/arma3/a3a-intercept-munitions";
+description = "Intercept Munitions v0.0.0";
+logo = "a3aim.paa";
+logoOver = "a3aim.paa";
+tooltip = "Intercept Munitions";
+tooltipOwned = "Intercept Munitions Owned";
+overview = "Makes artillery launched munitions interceptable.";
+author = "goreSplatter";
+overviewPicture = "a3aim.paa";
+overviewText = "Intercept Munitions overviewText";
+overviewFootnote = "<br /><br /><t color='#999999'>This content is under Arma Public License Share Alike (APL-SA) License.<br />Press <t /><t color='#19d3ff'>Left Shift + P<t /><t color='#999999'> to open the store page for more information.<t />";
