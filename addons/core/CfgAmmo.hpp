@@ -18,7 +18,7 @@ class CfgAmmo {
     // MLRS
     class SubmunitionBase : SubmunitionCore {
         GVAR(canIntercept) = 1;
-        GVAR(vehicleClass) = QGVAR(Projectile_Small);
+        GVAR(vehicleClass) = QGVAR(Projectile_Large);
     };
 
     // A-10 GAU cannon; cannot intercept

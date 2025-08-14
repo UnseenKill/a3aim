@@ -14,7 +14,6 @@ class CfgVehicles {
         isUAV = 0;
         laserTarget = 0;
         radarTarget = 1;
-        radarTargetSize = 0.5;
         threat[] = {1,1,0};
         nvTarget = 0;
         visualTarget = 0;
@@ -24,6 +23,7 @@ class CfgVehicles {
         displayName = CSTRING(Projectile_Large);
         irTarget = 1;
         irTargetSize = 2;
+        radarTargetSize = 1.25;
     };
 
     class GVAR(Projectile_Large_B) : GVAR(Projectile_Large) {
@@ -49,6 +49,7 @@ class CfgVehicles {
 
     class GVAR(Projectile_Small) : GVAR(Projectile_Base) {
         displayName = CSTRING(Projectile_Small);
+        radarTargetSize = 0.5;
     };
 
     class GVAR(Projectile_Small_B) : GVAR(Projectile_Small) {
