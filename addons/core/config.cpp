@@ -1,16 +1,15 @@
 #include "script_component.hpp"
 
-// Simply a package which requires other addons.
 class CfgPatches {
     class ADDON {
         name = CSTRING(component);
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "cba_common" };
-        author = CSTRING(Author);
+        requiredAddons[] = { QUOTE(MAIN_ADDON) };
+        author = ECSTRING(main,Author);
         authors[] = {"gor3Splatter"};
-        url = CSTRING(URL);
+        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };

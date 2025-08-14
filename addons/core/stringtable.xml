@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3AIM">
+    <Package name="Core">
+        <Key ID="STR_A3AIM_Core_Component">
+            <English>A3AIM - Core Component</English>
+            <German>A3AIM - Core Komponente</German>
+        </Key>
+    </Package>
+</Project>
