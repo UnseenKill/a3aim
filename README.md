@@ -13,8 +13,8 @@ Features
 --------
 
 This *server-side only* mod makes projectiles shot by artillery/mortar, rocket
-launchers or dropped bombs trackable for anti-air systems like Patriot or the
-Praetorian.
+launchers, VLS or dropped bombs trackable for anti-air systems like Patriot or
+the Praetorian.
 
 Installation
 ------------
