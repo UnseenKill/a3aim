@@ -1,7 +1,14 @@
 class CfgAmmo {
     class Default;
+    class MissileBase;
     class ShellCore;
     class SubmunitionCore;
+
+    // Cruise Missile
+    class ammo_Missile_CruiseBase : MissileBase {
+        GVAR(canIntercept) = 1;
+        GVAR(vehicleClass) = QGVAR(Projectile_Large);
+    };
 
     // Bombs
     class BombCore : Default {

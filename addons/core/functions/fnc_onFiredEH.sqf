@@ -40,7 +40,9 @@ params[
 
 if isNull _projectile exitWith {};
 if ([_ammo] call FUNC(canIntercept)) then {
-    [_projectile, _ammo, side _unit] call FUNC(makeInterceptable);
+    [{
+        call FUNC(makeInterceptable);
+    }, [_projectile, _ammo, side _unit], 2.75] call CBA_fnc_waitAndExecute;
 };
 
 nil;
