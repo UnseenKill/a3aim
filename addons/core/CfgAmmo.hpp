@@ -1,5 +1,6 @@
 class CfgAmmo {
-    class Default;
+    class BombCore;
+    class LaserBombCore;
     class MissileBase;
     class ShellCore;
     class SubmunitionCore;
@@ -10,8 +11,13 @@ class CfgAmmo {
         GVAR(vehicleClass) = QGVAR(Projectile_Large);
     };
 
-    // Bombs
-    class BombCore : Default {
+    // GBU, Mk82
+    class Bo_Mk82 : BombCore {
+        GVAR(canIntercept) = 1;
+        GVAR(vehicleClass) = QGVAR(Projectile_Large);
+    };
+
+    class ammo_Bomb_LaserGuidedBase : LaserBombCore {
         GVAR(canIntercept) = 1;
         GVAR(vehicleClass) = QGVAR(Projectile_Large);
     };
