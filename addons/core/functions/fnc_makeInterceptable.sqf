@@ -31,7 +31,7 @@ if !assert(params[
     ["_side", nil, [sideUnknown]]
 ]) exitWith {};
 
-if !assert(!isNull _projectile) exitWith {};
+if (isNull _projectile) exitWith {};
 
 private _suffix = GVAR(sideSuffixes) get _side;
 
