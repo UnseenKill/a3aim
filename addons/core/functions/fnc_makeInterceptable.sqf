@@ -47,15 +47,16 @@ private _interceptable = _vehicleClass createVehicle(_projectile modelToWorld[0,
 
 if !assert(!isNull _interceptable) exitWith { ERROR_1("Failed to create vehicle %1",_vehicleClass) };
 
-_interceptable setMass 0;
+_interceptable setMass 0.025;
 _interceptable setObjectTexture[0, ""]; // remove texture
 _interceptable setVelocity velocity _projectile;
 createVehicleCrew _interceptable;
 driver _interceptable disableAI "ALL";
 _interceptable deleteVehicleCrew gunner _interceptable;
+_interceptable setVehicleTIPars[1, 1, 1];
 (group driver _interceptable) setVariable["ace_map_hideBlueForceMarker", true];
 
-[QGVAR(interceptVehicleCreated), [_interceptable, _projectile]] call CBA_fnc_serverEvent;
+[QGVAR(interceptVehicleCreated), [_interceptable, _projectile]] spawn CBA_fnc_serverEvent;
 
 #ifndef __A3AIM_PRODUCTION__
 allCurators apply { _x addCuratorEditableObjects[[_interceptable], true] };
