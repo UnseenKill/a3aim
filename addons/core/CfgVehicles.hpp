@@ -7,10 +7,11 @@ class CfgVehicles {
 
         model = "\A3\Weapons_F\Ammoboxes\Supplydrop.p3d";
 
-        acceleration = 0;
+        acceleration = 0.1;
         armor = 10;
         hiddenSelectionsTextures[] = {"",""};
-        irTarget = 0;
+        irTarget = 1;
+        irTargetSize = 2;
         isUAV = 0;
         laserTarget = 0;
         radarTarget = 1;
@@ -21,8 +22,6 @@ class CfgVehicles {
 
     class GVAR(Projectile_Large) : GVAR(Projectile_Base) {
         displayName = CSTRING(Projectile_Large);
-        irTarget = 1;
-        irTargetSize = 2;
         radarTargetSize = 1.25;
     };
 
