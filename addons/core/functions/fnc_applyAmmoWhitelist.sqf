@@ -31,6 +31,7 @@ if !assert(params[
 
 if !(isServer) exitWith { WARNING_1("Not on server, ignoring ammo whitelist '%1'.",_setting) };
 
+GVAR(ammoCache) = createHashMap;
 GVAR(ammoWhitelist) = _setting splitString "," apply {
     private _ammo = toLowerANSI trim _x;
 
