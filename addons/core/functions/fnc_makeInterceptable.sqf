@@ -37,7 +37,21 @@ private _suffix = GVAR(sideSuffixes) get _side;
 
 if !assert(!isNil "_suffix") exitWith {};
 
-private _vehicleClass = format["%1_%2", getText(configFile >> "CfgAmmo" >> _ammo >> QGVAR(vehicleClass)), _suffix];
+private _projectileType = if (isNil QGVAR(ammoWhitelist)) then {
+    getText(configFile >> "CfgAmmo" >> _ammo >> QGVAR(vehicleClass))
+} else {
+    private _index = GVAR(ammoWhitelist) findIf {
+        _ammo isKindOf[_x select 1, configFile >> "CfgAmmo"];
+    };
+
+    if !assert(_index isNotEqualTo -1) then {
+        QGVAR(Projectile_Large);
+    } else {
+        GVAR(ammoWhitelist) select _index select 0;
+    };
+};
+
+private _vehicleClass = format["%1_%2", _projectileType, _suffix];
 
 if !assert(isClass(configFile >> "CfgVehicles" >> _vehicleClass)) exitWith {};
 
