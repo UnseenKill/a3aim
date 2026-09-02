@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3AIM">
+    <Package name="Settings">
+        <Key ID="STR_A3AIM_Settings_Component">
+            <English>A3AIM - Settings Component</English>
+            <German>A3AIM - Einstellungen Komponente</German>
+        </Key>
+        <Key ID="STR_A3AIM_Settings_Settings_ammoWhitelist_DisplayName">
+            <English>Ammo whitelist (read tooltip!)</English>
+            <German>Munitions-Whitelist (Tooltip lesen!)</German>
+        </Key>
+        <Key ID="STR_A3AIM_Settings_Settings_ammoWhitelist_Tooltip">
+            <English>Specify which ammo types should be intercepted. Separate multiple entries with commas.\n\nAn empty list will intercept all ammo types. As soon as there are entries, ONLY those listed will be intercepted. By default, listed entries will be treated as small projectiles, unless prefixed with "l:" (lower case "L") in which case they're treated as large projectiles. Tests are evaluated with "isKindOf".\n\nExample (exclude quotes): "BombCluster_03_Ammo_F,l:ammo_Missile_Cruise_01,BombCluster_01_Ammo_F"</English>
+            <German>Geben Sie an, welche Munitionsarten erlaubt sind. Mehrere Einträge durch Kommas trennen.\n\nEine leere Liste wird alle Munitionsarten abfangen. Standardmäßig werden die aufgeführten Einträge als kleine Projektile behandelt, es sei denn, sie sind mit "l:" (kleines "L") vorangestellt, in diesem Fall werden sie als große Projektile behandelt. Sobald Einträge vorhanden sind, werden NUR die aufgeführten abgefangen. Tests werden mit "isKindOf" ausgewertet.\n\nBeispiel (ohne Anführungszeichen): "BombCluster_03_Ammo_F,l:ammo_Missile_Cruise_01,BombCluster_01_Ammo_F"</German>
+        </Key>
+        <Key ID="STR_A3AIM_Settings_Settings_reactionDelay_DisplayName">
+            <English>Reaction delay</English>
+            <German>Reaktionsverzögerung</German>
+        </Key>
+        <Key ID="STR_A3AIM_Settings_Settings_reactionDelay_Tooltip">
+            <English>Specify the delay before reacting to interceptable ammo, actually making it interceptable.</English>
+            <German>Geben Sie die Verzögerung an, bevor auf abgefangene Munition reagiert wird.</German>
+        </Key>
+    </Package>
+</Project>

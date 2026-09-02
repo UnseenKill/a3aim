@@ -27,10 +27,17 @@ params[
     ["_ammo", "", [""]]
 ];
 
-private _canIntercept = GVAR(ammoCache) getOrDefault[_ammo, 0];
+private _canIntercept = GVAR(ammoCache) get _ammo;
 
-if (_canIntercept isEqualTo 0) then {
-    _canIntercept = getNumber(configFile >> "CfgAmmo" >> _ammo >> QGVAR(canIntercept)) isNotEqualTo 0;
+if (isNil "_canIntercept") then {
+    _canIntercept = if (isNil QGVAR(ammoWhitelist)) then {
+        getNumber(configFile >> "CfgAmmo" >> _ammo >> QGVAR(canIntercept)) isNotEqualTo 0;
+    } else {
+        GVAR(ammoWhitelist) findIf {
+            _ammo isKindOf[_x select 1, configFile >> "CfgAmmo"];
+        } isNotEqualTo -1;
+    };
+
     TRACE_2(QFUNC(canIntercept),_ammo,_canIntercept);
     GVAR(ammoCache) set[_ammo, _canIntercept];
 };
