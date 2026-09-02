@@ -38,7 +38,7 @@ private _suffix = GVAR(sideSuffixes) get _side;
 if !assert(!isNil "_suffix") exitWith {};
 
 private _projectileType = if (isNil QGVAR(ammoWhitelist)) then {
-    getText(configFile >> "CfgAmmo" >> _ammo >> QGVAR(projectileType))
+    getText(configFile >> "CfgAmmo" >> _ammo >> QGVAR(vehicleClass))
 } else {
     private _index = GVAR(ammoWhitelist) findIf {
         _ammo isKindOf[_x select 1, configFile >> "CfgAmmo"];
