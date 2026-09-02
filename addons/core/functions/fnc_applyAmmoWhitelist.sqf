@@ -29,6 +29,8 @@ if !assert(params[
     ["_setting", nil, [""]]
 ]) exitWith {};
 
+if !(isServer) exitWith { WARNING_1("Not on server, ignoring ammo whitelist '%1'.",_setting) };
+
 GVAR(ammoWhitelist) = _setting splitString "," apply {
     private _ammo = toLowerANSI trim _x;
 
@@ -41,7 +43,7 @@ GVAR(ammoWhitelist) = _setting splitString "," apply {
 
 if (GVAR(ammoWhitelist isEqualTo [])) exitWith {
     INFO("Ammo whitelist is empty. Intercepting all pre-configured munitions types.");
-    missionNamespace setVariable[QGVAR(ammoWhitelist), nil, true];
+    missionNamespace setVariable[QGVAR(ammoWhitelist), nil];
 };
 
 private _invalid = GVAR(ammoWhitelist)
@@ -52,10 +54,9 @@ private _invalid = GVAR(ammoWhitelist)
 if (_invalid isNotEqualTo "") exitWith {
     WARNING_1("Failed to apply ammo whitelist from setting string: %1",_setting);
     WARNING_1("Invalid ammo entries: %1",_invalid);
-    missionNamespace setVariable[QGVAR(ammoWhitelist), nil, true];
+    missionNamespace setVariable[QGVAR(ammoWhitelist), nil];
 };
 
 INFO_1("Ammo whitelist: %1",GVAR(ammoWhitelist));
-publicVariable QGVAR(ammoWhitelist);
 
 nil;
