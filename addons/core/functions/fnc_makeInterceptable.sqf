@@ -32,6 +32,7 @@ if !assert(params[
 ]) exitWith {};
 
 if (isNull _projectile) exitWith {};
+if !assert(local _projectile) exitWith {};
 
 private _suffix = GVAR(sideSuffixes) get _side;
 
@@ -75,6 +76,8 @@ _interceptable setVehicleTIPars[1, 1, 1];
 #ifndef __A3AIM_PRODUCTION__
 allCurators apply { _x addCuratorEditableObjects[[_interceptable], true] };
 #endif
+
+_interceptable disableCollisionWith _projectile;
 
 [{
     params[["_args",[],[[]]], ["_handlerID",0,[0]]];
