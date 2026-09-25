@@ -31,8 +31,12 @@ if !assert(params[
     ["_side", nil, [sideUnknown]]
 ]) exitWith {};
 
-if (isNull _projectile) exitWith {};
-if !assert(local _projectile) exitWith {};
+if (GVAR(reactionDelay) > 0) then {
+    uiSleep GVAR(reactionDelay);
+};
+
+// Projectile already splashed
+if (isNull _projectile) exitWith { TRACE_1(QFUNC(makeInterceptable),_projectile) };
 
 private _suffix = GVAR(sideSuffixes) get _side;
 

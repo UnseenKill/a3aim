@@ -1,19 +1,19 @@
 class Extended_FiredBIS_EventHandlers {
     class Air {
         class ADDON {
-            serverFiredBIS = QUOTE(call FUNC(onFiredEH));
+            clientFiredBIS = QUOTE(call FUNC(onFiredEH));
         };
     };
 
     class LandVehicle {
         class ADDON {
-            serverFiredBIS = QUOTE(call FUNC(onFiredEH));
+            clientFiredBIS = QUOTE(call FUNC(onFiredEH));
         };
     };
 
     class Ship {
         class ADDON {
-            serverFiredBIS = QUOTE(call FUNC(onFiredEH));
+            clientFiredBIS = QUOTE(call FUNC(onFiredEH));
         };
     };
 };
