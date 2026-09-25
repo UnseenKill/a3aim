@@ -42,7 +42,10 @@ if isNull _projectile exitWith {};
 if ([_ammo] call FUNC(canIntercept)) then {
     [{
         params["_projectile"];
-        _this remoteExec[QFUNC(makeInterceptable), _projectile];
+
+        if !(isNull _projectile) then {
+            _this remoteExec[QFUNC(makeInterceptable), _projectile];
+        };
     }, [_projectile, _ammo, side _unit], GVAR(reactionDelay)] call CBA_fnc_waitAndExecute;
 };
 
