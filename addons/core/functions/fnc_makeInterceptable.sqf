@@ -82,6 +82,7 @@ allCurators apply { _x addCuratorEditableObjects[[_interceptable], true] };
 #endif
 
 _interceptable disableCollisionWith _projectile;
+_interceptable addEventHandler["Killed", { LOG_1("UAV killed: %1",_this) }];
 
 [{
     params[["_args",[],[[]]], ["_handlerID",0,[0]]];
@@ -107,7 +108,7 @@ _interceptable disableCollisionWith _projectile;
         deleteVehicle _interceptable;
         [_handlerID] call CBA_fnc_removePerFrameHandler;
     };
-    
+
     _interceptable setPos (_projectile modelToWorld[1,-5,1]);
     _interceptable setVelocity velocity _projectile;
 }, 0, [_interceptable, _projectile]] call CBA_fnc_addPerFrameHandler;
