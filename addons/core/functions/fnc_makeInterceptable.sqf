@@ -62,10 +62,11 @@ if !assert(isClass(configFile >> "CfgVehicles" >> _vehicleClass)) exitWith {};
 
 TRACE_2(QFUNC(makeInterceptable),_ammo,_vehicleClass);
 
-private _interceptable = _vehicleClass createVehicle(_projectile modelToWorld[0,-5,0]);
+private _interceptable = _vehicleClass createVehicle [0,0,0];
 
 if !assert(!isNull _interceptable) exitWith { ERROR_1("Failed to create vehicle %1",_vehicleClass) };
 
+_interceptable setPosASL (_projectile modelToWorldWorld [0,-5,0]);
 _interceptable setMass 0.025;
 _interceptable setObjectTexture[0, ""]; // remove texture
 _interceptable setVelocity velocity _projectile;
@@ -109,7 +110,7 @@ _interceptable addEventHandler["Killed", { LOG_1("UAV killed: %1",_this) }];
         [_handlerID] call CBA_fnc_removePerFrameHandler;
     };
 
-    _interceptable setPos (_projectile modelToWorld[1,-5,1]);
+    _interceptable setPosASL (_projectile modelToWorldWorld [0,-5,0]);
     _interceptable setVelocity velocity _projectile;
 }, 0, [_interceptable, _projectile]] call CBA_fnc_addPerFrameHandler;
 
