@@ -28,21 +28,20 @@ Author:
 TRACE_1(QFUNC(onFiredEH),_this);
 
 params[
-    ["_unit", objNull, [objNull]], 
-    ["_weapon", "", [""]], 
-    ["_muzzle", "", [""]], 
-    ["_mode", "", [""]], 
-    ["_ammo", "", [""]], 
-    ["_magazine", "", [""]], 
-    ["_projectile", objNull, [objNull]], 
+    ["_unit", objNull, [objNull]],
+    ["_weapon", "", [""]],
+    ["_muzzle", "", [""]],
+    ["_mode", "", [""]],
+    ["_ammo", "", [""]],
+    ["_magazine", "", [""]],
+    ["_projectile", objNull, [objNull]],
     ["_gunner", objNull, [objNull]]
 ];
 
-if isNull _projectile exitWith {};
-if ([_ammo] call FUNC(canIntercept)) then {
-    [{
-        call FUNC(makeInterceptable);
-    }, [_projectile, _ammo, side _unit], GVAR(reactionDelay)] call CBA_fnc_waitAndExecute;
-};
+if (isNull _projectile) exitWith { TRACE_1(QFUNC(onFiredEH),_projectile) };
+if !(local _projectile) exitWith { TRACE_1(QFUNC(onFiredEH),local _projectile) };
+if !([_ammo] call FUNC(canIntercept)) exitWith {};
+
+[_projectile, _ammo, side _unit] spawn FUNC(makeInterceptable);
 
 nil;
